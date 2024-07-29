@@ -9,11 +9,12 @@
             </RouterLink>
 
             <div class="flex gap-3 flex-1 justify-end">
-                <i class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"></i>
+                <i class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"
+                    @click="toggleModal"></i>
                 <i class="fa-solid fa-plus text-xl  hover:text-weather-secondary duration-150 cursor-pointer"></i>
             </div>
 
-            <BaseModal>
+            <BaseModal :modalActive="modalActive">
                 <h1 class="text-black">Hello From Modal</h1>
                 <div class="text-black">
                     <h1 class="text-2xl mb-1">About:</h1>
@@ -28,19 +29,26 @@
                             a later time on the home page. </li>
                     </ol>
                     <h2 class="text-2xl">Removing a city</h2>
-                <p> If you no longer wish to track a city, simply select the city within the home page. At the bottom of
-                    the page, there will be am option to delete the city. </p>
-            </div>
-        </BaseModal>
+                    <p> If you no longer wish to track a city, simply select the city within the home page. At the bottom of
+                        the page, there will be am option to delete the city. </p>
+                </div>
+            </BaseModal>
 
 
-    </nav>
+        </nav>
 
-</div></template>
+    </div>
+</template>
   
 <script setup>
 import { RouterLink } from 'vue-router';
 import BaseModal from './BaseModal.vue';
+import { ref } from 'vue';
+
+const modalActive = ref(null);
+const toggleModal = () => {
+    modalActive.value = !modalActive.value;
+};
 
 </script>
   
